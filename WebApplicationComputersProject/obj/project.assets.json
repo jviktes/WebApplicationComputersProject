@@ -8946,11 +8946,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "e:\\Dropbox\\LearningOOP\\WebApplicationComputersProject\\WebApplicationComputersProject\\WebUIMigratingToolProject.csproj",
+      "projectUniqueName": "e:\\Dropbox\\GreyCorbel\\WebApplicationComputersProject\\WebApplicationComputersProject\\WebUIMigratingToolProject.csproj",
       "projectName": "WebUIMigratingToolProject",
-      "projectPath": "e:\\Dropbox\\LearningOOP\\WebApplicationComputersProject\\WebApplicationComputersProject\\WebUIMigratingToolProject.csproj",
+      "projectPath": "e:\\Dropbox\\GreyCorbel\\WebApplicationComputersProject\\WebApplicationComputersProject\\WebUIMigratingToolProject.csproj",
       "packagesPath": "C:\\Users\\beerComeHere\\.nuget\\packages\\",
-      "outputPath": "e:\\Dropbox\\LearningOOP\\WebApplicationComputersProject\\WebApplicationComputersProject\\obj\\",
+      "outputPath": "e:\\Dropbox\\GreyCorbel\\WebApplicationComputersProject\\WebApplicationComputersProject\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

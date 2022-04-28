@@ -8,29 +8,29 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = WebUIMigratingToolProject
 build_property.RootNamespace = WebUIMigratingToolProject
-build_property.ProjectDir = e:\Dropbox\LearningOOP\WebApplicationComputersProject\WebApplicationComputersProject\
+build_property.ProjectDir = e:\Dropbox\GreyCorbel\WebApplicationComputersProject\WebApplicationComputersProject\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = e:\Dropbox\LearningOOP\WebApplicationComputersProject\WebApplicationComputersProject
+build_property.MSBuildProjectDirectory = e:\Dropbox\GreyCorbel\WebApplicationComputersProject\WebApplicationComputersProject
 build_property._RazorSourceGeneratorDebug = 
 
-[e:/Dropbox/LearningOOP/WebApplicationComputersProject/WebApplicationComputersProject/Views/Computers/Data.cshtml]
+[e:/Dropbox/GreyCorbel/WebApplicationComputersProject/WebApplicationComputersProject/Views/Computers/Data.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcHV0ZXJzXERhdGEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[e:/Dropbox/LearningOOP/WebApplicationComputersProject/WebApplicationComputersProject/Views/Computers/Details.cshtml]
+[e:/Dropbox/GreyCorbel/WebApplicationComputersProject/WebApplicationComputersProject/Views/Computers/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcHV0ZXJzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[e:/Dropbox/LearningOOP/WebApplicationComputersProject/WebApplicationComputersProject/Views/Computers/Index.cshtml]
+[e:/Dropbox/GreyCorbel/WebApplicationComputersProject/WebApplicationComputersProject/Views/Computers/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcHV0ZXJzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[e:/Dropbox/LearningOOP/WebApplicationComputersProject/WebApplicationComputersProject/Views/Overviews/Index.cshtml]
+[e:/Dropbox/GreyCorbel/WebApplicationComputersProject/WebApplicationComputersProject/Views/Overviews/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3ZlcnZpZXdzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[e:/Dropbox/LearningOOP/WebApplicationComputersProject/WebApplicationComputersProject/Views/Shared/_Layout.cshtml]
+[e:/Dropbox/GreyCorbel/WebApplicationComputersProject/WebApplicationComputersProject/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-utm4m4smyr
