@@ -1,0 +1,151 @@
+﻿<!--Pokusne nacitani dat do tabulky ve formatu json...-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+    
+</head>
+<body>
+    <table id="computerTable" class="display dataTable">
+        <thead>
+            <tr>
+                <th>ComputerName</th>
+                <th>ComputerDomain</th>
+                <th>RealizedMigrationDate</th>
+                <th>PlannedMigrationDate</th>
+                <th>Akce</th>
+            </tr>
+        </thead>
+        <tbody id="list-list"></tbody>
+    </table>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    
+    <script>
+        $(document).ready(function () {
+            $("#computerTable").dataTable(
+            {
+                retrieve: true,
+                searching:true,
+                paging: true,
+                responsive:true,
+                "columnDefs": [
+                {
+                    //computerName:
+                    "targets": [0],
+                    "data": "computerName",
+                },
+                {
+                    //computerDomain:
+                    "targets": [1],
+                    "data": "computerDomain",
+                },
+                {
+                    //RealizedMigrationDate:
+                    "targets": [2],
+                    "data": "realizedMigrationDate",
+                },
+                {
+                    //computerDomain:
+                    "targets": [3],
+                    "data": "plannedMigrationDate",
+                    render: function (data, type, row) 
+                            {
+                                if (type === 'display') {
+                                    return  PlannedMigrationDateRenderHtml(row);
+                                }
+                                return data;
+                    },
+                },
+                {
+                    //tlacitko pro nejakou funkci:
+                    "targets": [4],
+                    "data": "computerName",
+                    render: function (data, type, row) 
+                            {
+                                if (type === 'display') {
+                                    return  ActionButtonRenderHtml(row);
+                                }
+                                return data;
+                            },
+                },
+                ],
+                ajax: {
+                    "url": 'https://localhost:7264/Computers/DataJson',
+                    "dataSrc": function (jsonData) 
+                        {
+                            console.log(jsonData);
+                            return jsonData;
+                        }
+                },
+            }
+            );
+
+
+        })
+
+        function PlannedMigrationDateRenderHtml(_row) {
+            var _html = "";
+            var _id=_row.computerId;
+            _html=_html+"<input onchange=\"SetPlannedMigrationDate(this,"+_id+")\" type=\"datetime-local\"\>";
+            return _html;
+        }
+
+        function ActionButtonRenderHtml(row) {
+            var _html = "";
+            _html=_html+"<span title=\"Akce!\">";
+            _html=_html+"<button type=\"button\" onclick=\"AkceClick('" + row.computerName + "')\" title=\"Akce\"  class=\"symbolicIcon pointer\">Akce</button>";
+            _html=_html+"</span>";
+            return _html;
+        }
+
+        function AkceClick(_computerName) {
+            alert(_computerName);
+        }
+
+        function SetPlannedMigrationDate(obj,_id) {
+            var _plannedTime = obj.value;
+            var _computerId = _id;
+            console.log(_computerId);
+            console.log(_plannedTime);
+            UpdatePlannedMigrationDate(_computerId,_plannedTime);
+        }
+
+        function UpdatePlannedMigrationDate(_computerId,_plannedTime) 
+        {
+        var data = JSON.stringify({
+                _dateObj:_plannedTime,
+                _id:_computerId
+            });
+
+        $.ajax({
+            url: 'https://localhost:7264/Computers/SetPlannedMigrationDate',
+
+            cache: false,
+            type: 'POST',
+            dataType: 'text',
+            data: {
+                data:_plannedTime
+                //_id:_computerId
+            },
+            success: function (data) {
+                console.log("UpdatePlannedMigrationDate result data:");
+                var res = JSON.parse(data);
+                console.log(res);
+            },
+            error: function (request, message) 
+            {
+                return false;
+            }
+        });
+        }   
+
+
+    </script>
+</body>
+</html>

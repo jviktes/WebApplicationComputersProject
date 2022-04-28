@@ -1,0 +1,127 @@
+﻿@using WebApplicationComputersProject.Controllers
+@model IEnumerable<WebApplicationComputersProject.Models.Computer>
+
+@{
+    ViewData["Title"] = "Computers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+<style>
+/*skryti kalendare:*/
+input[type="datetime-local"]::-webkit-inner-spin-button,
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    /* display: none;
+    -webkit-appearance: none; */
+    margin:0;
+}
+input[type="datetime-local"]::-webkit-datetime-edit {
+    display:none;
+}
+</style>
+
+<script>
+        $(document).ready(function () {
+            $("#computerTable").dataTable(
+            {
+                retrieve: true,
+                searching:true,
+                paging: true,
+                responsive:true, 
+            }
+            );
+        })
+
+        function UpdatePlannedMigrationDate(_computerId,obj) 
+        {
+            console.log(_computerId);
+            console.log(obj.value);
+
+            var data = JSON.stringify({
+                    _dateObj:obj.value
+            });
+
+            $.ajax({
+                url: '/Computers/UpdatePlannedMigrationDate/'+_computerId,
+                cache: false,
+                type: 'POST',
+                dataType: 'text/html',
+                data: {
+                    data:obj.value,
+                    computerId:_computerId
+                },
+                success: function (data) {
+                    console.log("UpdatePlannedMigrationDate result data:");
+                    var res = JSON.parse(data);
+                    console.log(res);
+                },
+                error: function (request, message) 
+                {
+                    return false;
+                }
+            });
+        }   
+</script>
+
+<h1></h1>
+
+<table class="display dataTable"  id="computerTable">
+    <thead>
+        <tr>
+            <th style="display:none;">
+                @Html.DisplayNameFor(model => model.ComputerId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ComputerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ComputerDomain)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlannedMigrationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RealizedMigrationDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td style="display:none;">
+                @Html.DisplayFor(modelItem => item.ComputerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComputerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComputerDomain)
+            </td>
+            <td>
+                 @Html.DisplayFor(modelItem => item.PlannedMigrationDate)
+               
+                 @Html.TextBoxFor(modelItem => item.PlannedMigrationDate, "{0:yyyy-MM-ddTHH:mm:ss}", new
+                 {
+                           @class = "", //form-control
+                           @type = "datetime-local",
+                           @onchange="UpdatePlannedMigrationDate("+item.ComputerId+",this)"
+                 })
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RealizedMigrationDate)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new {  computerId=item.ComputerId})
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
